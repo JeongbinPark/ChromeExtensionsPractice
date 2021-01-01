@@ -19,7 +19,14 @@
   },
 
   "permissions" : [   
-     "tabs",
-    "<all_urls>"
-  ]
+    "tabs",
+    "<all_urls>",
+    "contextMenus"
+  ],
+
+  "background": {
+    "persistent": false,
+    "scripts": ["ControlContextMenu.js"]
+  }
+  
 }
