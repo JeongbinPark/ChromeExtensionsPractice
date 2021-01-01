@@ -1,0 +1,27 @@
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        width: 520px;
+        min-height: 550px;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+
+
+      .searchBox input {
+        width: 80%;
+      }
+      .kewordLists li>div{
+        display: inline-block;
+      } 
+      .kewordLists .timestamp {
+        width: 20%;
+        margin-right: 5%;
+      }
+      .kewordLists .keyword {
+        width: 70%;
+      }
