@@ -16,5 +16,10 @@ chrome.contextMenus.onClicked.addListener((info, tab)=>{
       "title": tab.title
     }
   }
-  console.log(page_info);
+})
+chrome.extension.onConnect.addListener(function(port) {
+  console.log("Connected .....");
+  port.onMessage.addListener(function(msg) {
+      port.postMessage(page_info);
+  });
 })

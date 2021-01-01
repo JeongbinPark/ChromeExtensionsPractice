@@ -2,7 +2,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="./master.css" />
-    <script></script>
+    <script src="./popup.js"></script>
   </head>
   <body>
     <div class="title">
@@ -12,22 +12,13 @@
       <input type="text" placeholder="Search Keyword">
       <button>Search</button>
     </div>
-    <div class="kewordLists">
-      <ul>
-        <li>
-          <div class="timestamp">timestamp</div>
-          <div class="keyword">keyword</div>
-        </li>
-        <li>
-          <div class="timestamp">timestamp</div>
-          <div class="keyword">keyword</div>
-        </li>
-        <li>
+    <div class="keywordListsComponent">
+      <ul id="keywordLists">
+        <li>  <!-- Now, Page's Id and Title, not Timestamp and keyword-->
           <div class="timestamp">timestamp</div>
           <div class="keyword">keyword</div>
         </li>
       </ul>
-
     </div>
   </body>
 </html>
