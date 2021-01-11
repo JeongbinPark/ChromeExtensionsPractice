@@ -1,19 +1,39 @@
-const port = chrome.extension.connect({
-  name: "Sample Communication"
-});
-port.postMessage("Hi BackGround");
-port.onMessage.addListener(function(obj) {
-  let ul = document.getElementById("keywordLists");
-  let li = document.createElement("li");
-  let div_id = document.createElement("div");
-  let div_title = document.createElement("div");
 
-  div_id.appendChild(document.createTextNode(obj.id));
-  div_id.setAttribute("class", "timestamp");
-  div_title.appendChild(document.createTextNode(obj.title));
-  div_title.setAttribute("class", "keyword");
+window.onload = () =>{
+  const input = document.getElementById("videoInput");
+  const videoSrc_button = document.getElementById("videoSrc_button");
+  videoSrc_button.addEventListener('click', ()=>{
+    videoSrc_button_onClick(videoSrc_button.value, input.value);
+   }, false);
+  }
 
-  li.appendChild(div_id);
-  li.appendChild(div_title);
-  ul.appendChild(li);
-});
+chrome.runtime.onMessage.addListener(
+  function(message, sender, sendResponse){
+    if (message.msg === "video_source"){
+      console.log(message.data.src);
+      videoSrc_button_onClick(videoSrc_button.value, message.data.src);
+    }
+  }
+)
+
+
+const videoSrc_button_onClick = (state, text) => {
+  const input = document.getElementById("videoInput");
+  const videoSrc_button = document.getElementById("videoSrc_button");
+  const src_text = document.getElementById("videoSrc");
+  src_text.innerText = text;
+
+  if(state === "create"){
+    input.style.display = "none";
+    videoSrc_button.value = "delete";
+    videoSrc_button.innerText = "delete";
+    src_text.style.display = "inline-block";
+  }
+  else{
+    input.style.display = "inline-block";
+    videoSrc_button.value = "create";
+    videoSrc_button.innerText = "create";
+    src_text.style.display = "none";
+    input.value = "";
+  }
+}

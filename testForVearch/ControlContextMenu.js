@@ -3,23 +3,17 @@ chrome.runtime.onInstalled.addListener(() => {
     'title': "Search Keywords vias Vearch",
     'type':  'normal',
     'id': "video_test",
-    'contexts':['all']
+    'contexts':['video']
   })
 });
-
-let page_info;
-
 chrome.contextMenus.onClicked.addListener((info, tab)=>{
-  if(tab){
-    page_info = {
-      "id": tab.id,
-      "title": tab.title
+  const video_info = info.srcUrl;
+  console.log(video_info);
+  chrome.runtime.sendMessage({
+    msg: "video_source",
+    data: {
+      src: video_info
     }
-  }
-})
-chrome.extension.onConnect.addListener(function(port) {
-  console.log("Connected .....");
-  port.onMessage.addListener(function(msg) {
-      port.postMessage(page_info);
-  });
+  }, console.log("OK")
+  )
 })

@@ -12,6 +12,15 @@
       }
 
 
+      .title input{
+        display: inline-block;
+        width: 80%;
+      }
+      #videoSrc {
+        width: 80%;
+        display: none;
+      }
+
       .searchBox input {
         width: 80%;
       }
